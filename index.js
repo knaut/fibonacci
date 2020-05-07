@@ -11,10 +11,10 @@ function recursive(last, next, limit) {
 
 	console.log({iterationTimes, iteration})
 
-	if (iteration <= limit) {
+	if (iterationTimes <= limit) {
 
 		return recursive(next, iteration, limit)
-		
+
 	}
 }
 
