@@ -3,13 +3,31 @@ import React, { useState } from 'react'
 import { Grommet, Box, RangeSelector, Stack, Text } from 'grommet'
 import { grommet } from 'grommet/themes'
 
+const min = 0
+const max = 25
+// build an array with min/max
+
+const valuesArray = []
+for (let i = min; max >= i; ++i) {
+  valuesArray.push(i)
+}
+
 export const Range = () => {
+  const initialSubset = valuesArray.slice(0, 5)
+  console.log({ initialSubset })
+
+  const [range, setRange] = useState(initialSubset)
+  const onChange = values => {
+    console.log(values)
+    setRange(values)
+  }
+
   return (
     <Grommet theme={grommet}>
       <Box align='center' pad='large'>
         <Stack>
           <Box direction='vertical' justify='between'>
-            {[0, 5, 10, 25, 100].map(value => (
+            {valuesArray.map(value => (
               <Box
                 key={value}
                 width='xxsmall'
@@ -24,11 +42,11 @@ export const Range = () => {
           </Box>
           <RangeSelector
             direction={'horizontal'}
-            min={0}
-            max={20}
+            min={min}
+            max={max}
             size='full'
-            values={[0, 5]}
-
+            values={range}
+            onChange={onChange}
           />
         </Stack>
       </Box>
