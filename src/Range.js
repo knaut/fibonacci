@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { Grommet, Box, RangeSelector, Stack, Text } from 'grommet'
 import { grommet } from 'grommet/themes'
 
+import { FibonacciLine } from './FibonacciLine'
+
 const min = 0
 const max = 25
 // build an array with min/max
@@ -49,6 +51,9 @@ export const Range = () => {
             onChange={onChange}
           />
         </Stack>
+      </Box>
+      <Box>
+        <FibonacciLine limit={range[ range.length - 1]}/>
       </Box>
     </Grommet>
   )
